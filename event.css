@@ -9,10 +9,12 @@ body
 
 nav
 {
-  background: #fff;
+  background: #b3abab;
   position: fixed;
   top: 0;
+  width: 100%;
 }
+
 nav ul
 {
   list-style-type: none;
@@ -25,3 +27,26 @@ float: left;
 color: #000;
 }
 /*navigation bar end*/
+.pageContent
+{
+	padding-top: 70px;
+}
+
+.header-logo img
+{
+	max-height: 80vh;
+	float: right;
+	padding: 40px
+}
+.header-text
+{
+	font-size: 40px;
+	padding: 40px;
+	line-height: 25vh;
+	font-family: courier;
+}
+.wrapper
+{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
