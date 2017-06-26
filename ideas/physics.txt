@@ -1,0 +1,3 @@
+1) physics with angry bird. calcuate angle etc
+2) build rollercoster techniques
+3) metro rail hunio engineer career game (torque, speed, time to break, where to break. optimal speed, maximum speed, pillars, potential risks etc)

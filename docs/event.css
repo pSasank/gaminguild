@@ -1,0 +1,27 @@
+body
+{
+	margin: 0px;
+}
+/*navigation bar */
+.nav-logo{
+  text-align:left;
+}
+
+nav
+{
+  background: #fff;
+  position: fixed;
+  top: 0;
+}
+nav ul
+{
+  list-style-type: none;
+  float: right;
+}
+nav ul li
+{
+  padding: 0 10px;
+float: left;
+color: #000;
+}
+/*navigation bar end*/
