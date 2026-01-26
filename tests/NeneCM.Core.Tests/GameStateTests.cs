@@ -197,12 +197,51 @@ public class GameStateTests
     }
 
     [Fact]
-    public void FromJson_ReturnsNull_ForInvalidJson()
+    public void FromJson_ThrowsForInvalidJson()
     {
-        var result = GameState.FromJson("not valid json");
-
-        // Depending on JsonSerializer behavior, this might throw or return null
-        // We expect it to throw for invalid JSON
+        // JsonSerializer throws for invalid JSON
         Assert.Throws<System.Text.Json.JsonException>(() => GameState.FromJson("not valid json"));
+    }
+
+    [Fact]
+    public void Budget_AvailableBudget_CalculatesCorrectly()
+    {
+        var budget = new Budget
+        {
+            TotalBudget = 250000,
+            AllocatedBudget = 75000
+        };
+
+        Assert.Equal(175000, budget.AvailableBudget);
+    }
+
+    [Fact]
+    public void Budget_IsInDeficit_WhenOverspent()
+    {
+        var budget = new Budget
+        {
+            TotalBudget = 100000,
+            AllocatedBudget = 150000
+        };
+
+        Assert.True(budget.IsInDeficit);
+        Assert.Equal(-50000, budget.Balance);
+    }
+
+    [Fact]
+    public void Budget_Clone_CreatesDeepCopy()
+    {
+        var original = new Budget
+        {
+            TotalBudget = 200000,
+            AllocatedBudget = 50000,
+            Debt = 10000
+        };
+
+        var clone = original.Clone();
+        clone.TotalBudget = 300000;
+
+        Assert.Equal(200000, original.TotalBudget);
+        Assert.Equal(300000, clone.TotalBudget);
     }
 }
