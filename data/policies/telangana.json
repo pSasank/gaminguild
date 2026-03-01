@@ -1,0 +1,465 @@
+{
+  "state": {
+    "name": "Telangana",
+    "name_te": "తెలంగాణ",
+    "starting_budget": 250000,
+    "starting_year": 2024
+  },
+  "metrics": [
+    { "name": "gdp_growth", "display_name": "GDP Growth", "base_value": 7.0, "min": -10, "max": 20, "unit": "%" },
+    { "name": "unemployment", "display_name": "Unemployment", "base_value": 5.0, "min": 0, "max": 30, "unit": "%" },
+    { "name": "farmer_income", "display_name": "Farmer Income", "base_value": 100000, "min": 0, "max": 500000, "unit": "₹/year" },
+    { "name": "literacy_rate", "display_name": "Literacy Rate", "base_value": 72.0, "min": 0, "max": 100, "unit": "%" },
+    { "name": "poverty_rate", "display_name": "Poverty Rate", "base_value": 8.0, "min": 0, "max": 50, "unit": "%" },
+    { "name": "healthcare_access", "display_name": "Healthcare Access", "base_value": 60.0, "min": 0, "max": 100, "unit": "%" },
+    { "name": "infrastructure_index", "display_name": "Infrastructure", "base_value": 55.0, "min": 0, "max": 100, "unit": "index" },
+    { "name": "industrial_growth", "display_name": "Industrial Growth", "base_value": 8.0, "min": -10, "max": 25, "unit": "%" }
+  ],
+  "factions": [
+    { "id": 1, "name": "Rural Farmers", "name_te": "గ్రామీణ రైతులు", "population_percent": 35, "priorities": ["agriculture", "welfare"] },
+    { "id": 2, "name": "Urban Professionals", "name_te": "పట్టణ వృత్తిపరులు", "population_percent": 25, "priorities": ["infrastructure", "industry"] },
+    { "id": 3, "name": "Students & Youth", "name_te": "విద్యార్థులు", "population_percent": 15, "priorities": ["education", "employment"] },
+    { "id": 4, "name": "Women", "name_te": "మహిళలు", "population_percent": 15, "priorities": ["welfare", "healthcare"] },
+    { "id": 5, "name": "Business Owners", "name_te": "వ్యాపారులు", "population_percent": 10, "priorities": ["industry", "infrastructure"] }
+  ],
+  "policies": [
+    {
+      "id": 1,
+      "name": "Rythu Bandhu",
+      "name_te": "రైతు బంధు",
+      "category": "agriculture",
+      "description": "Direct cash transfer of ₹10,000 per acre to farmers for crop investment",
+      "description_te": "పంట పెట్టుబడి కోసం రైతులకు ఎకరానికి ₹10,000 ప్రత్యక్ష నగదు బదిలీ",
+      "cost_per_year": 14000,
+      "implementation_time": 3,
+      "max_level": 5,
+      "effects": [
+        { "metric": "farmer_income", "value": 10000, "type": "immediate" },
+        { "metric": "gdp_growth", "value": 0.3, "type": "gradual", "delay": 6 }
+      ],
+      "faction_effects": [
+        { "faction_id": 1, "approval_change": 12 }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Rythu Bima",
+      "name_te": "రైతు బీమా",
+      "category": "agriculture",
+      "description": "Life insurance of ₹5 lakh for farmers aged 18-59",
+      "description_te": "18-59 సంవత్సరాల రైతులకు ₹5 లక్షల జీవిత బీమా",
+      "cost_per_year": 1500,
+      "implementation_time": 2,
+      "max_level": 3,
+      "effects": [
+        { "metric": "poverty_rate", "value": -0.2, "type": "gradual", "delay": 12 }
+      ],
+      "faction_effects": [
+        { "faction_id": 1, "approval_change": 8 }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Kalyana Lakshmi",
+      "name_te": "కళ్యాణ లక్ష్మీ",
+      "category": "welfare",
+      "description": "₹1,00,116 financial assistance for marriage of women from poor families",
+      "description_te": "పేద కుటుంబాల మహిళల వివాహానికి ₹1,00,116 ఆర్థిక సహాయం",
+      "cost_per_year": 2500,
+      "implementation_time": 1,
+      "max_level": 3,
+      "effects": [
+        { "metric": "poverty_rate", "value": -0.1, "type": "immediate" }
+      ],
+      "faction_effects": [
+        { "faction_id": 4, "approval_change": 10 },
+        { "faction_id": 1, "approval_change": 5 }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "KCR Kit",
+      "name_te": "కేసీఆర్ కిట్",
+      "category": "healthcare",
+      "description": "₹12,000 worth kit for pregnant women including nutrition and baby care items",
+      "description_te": "గర్భిణీ స్త్రీలకు పోషణ మరియు శిశు సంరక్షణ వస్తువులతో ₹12,000 విలువైన కిట్",
+      "cost_per_year": 800,
+      "implementation_time": 2,
+      "max_level": 3,
+      "effects": [
+        { "metric": "healthcare_access", "value": 2, "type": "immediate" }
+      ],
+      "faction_effects": [
+        { "faction_id": 4, "approval_change": 12 }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Mission Bhagiratha",
+      "name_te": "మిషన్ భగీరథ",
+      "category": "infrastructure",
+      "description": "Safe drinking water to every household through pipeline network",
+      "description_te": "పైప్‌లైన్ నెట్‌వర్క్ ద్వారా ప్రతి ఇంటికి సురక్షితమైన తాగునీరు",
+      "cost_per_year": 8000,
+      "implementation_time": 12,
+      "max_level": 5,
+      "effects": [
+        { "metric": "healthcare_access", "value": 3, "type": "delayed", "delay": 12 },
+        { "metric": "infrastructure_index", "value": 4, "type": "gradual", "delay": 6 }
+      ],
+      "faction_effects": [
+        { "faction_id": 1, "approval_change": 8 },
+        { "faction_id": 4, "approval_change": 6 }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "T-Hub",
+      "name_te": "టి-హబ్",
+      "category": "industry",
+      "description": "Technology incubator and startup ecosystem development",
+      "description_te": "టెక్నాలజీ ఇంక్యుబేటర్ మరియు స్టార్టప్ ఎకోసిస్టమ్ అభివృద్ధి",
+      "cost_per_year": 500,
+      "implementation_time": 6,
+      "max_level": 5,
+      "effects": [
+        { "metric": "industrial_growth", "value": 1.5, "type": "gradual", "delay": 12 },
+        { "metric": "unemployment", "value": -0.3, "type": "gradual", "delay": 18 }
+      ],
+      "faction_effects": [
+        { "faction_id": 2, "approval_change": 10 },
+        { "faction_id": 3, "approval_change": 8 },
+        { "faction_id": 5, "approval_change": 12 }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Telangana Fiber Grid",
+      "name_te": "తెలంగాణ ఫైబర్ గ్రిడ్",
+      "category": "infrastructure",
+      "description": "High-speed internet connectivity to all villages and government offices",
+      "description_te": "అన్ని గ్రామాలకు మరియు ప్రభుత్వ కార్యాలయాలకు హై-స్పీడ్ ఇంటర్నెట్ కనెక్టివిటీ",
+      "cost_per_year": 3000,
+      "implementation_time": 18,
+      "max_level": 5,
+      "effects": [
+        { "metric": "infrastructure_index", "value": 5, "type": "gradual", "delay": 12 },
+        { "metric": "gdp_growth", "value": 0.5, "type": "delayed", "delay": 24 }
+      ],
+      "faction_effects": [
+        { "faction_id": 1, "approval_change": 4 },
+        { "faction_id": 2, "approval_change": 8 },
+        { "faction_id": 5, "approval_change": 6 }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Fee Reimbursement",
+      "name_te": "ఫీజు రీయింబర్స్‌మెంట్",
+      "category": "education",
+      "description": "Full tuition fee reimbursement for students from economically weaker sections",
+      "description_te": "ఆర్థికంగా బలహీన వర్గాల విద్యార్థులకు పూర్తి ట్యూషన్ ఫీజు రీయింబర్స్‌మెంట్",
+      "cost_per_year": 4500,
+      "implementation_time": 2,
+      "max_level": 5,
+      "effects": [
+        { "metric": "literacy_rate", "value": 1, "type": "gradual", "delay": 12 },
+        { "metric": "unemployment", "value": -0.2, "type": "delayed", "delay": 48 }
+      ],
+      "faction_effects": [
+        { "faction_id": 3, "approval_change": 15 },
+        { "faction_id": 1, "approval_change": 6 }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Aasara Pensions",
+      "name_te": "ఆసరా పెన్షన్లు",
+      "category": "welfare",
+      "description": "Enhanced pension of ₹2,016 for elderly, widows, disabled, and weavers",
+      "description_te": "వృద్ధులు, వితంతువులు, వికలాంగులు మరియు చేనేత కార్మికులకు ₹2,016 పెంచిన పెన్షన్",
+      "cost_per_year": 12000,
+      "implementation_time": 1,
+      "max_level": 5,
+      "effects": [
+        { "metric": "poverty_rate", "value": -0.5, "type": "immediate" }
+      ],
+      "faction_effects": [
+        { "faction_id": 1, "approval_change": 6 },
+        { "faction_id": 4, "approval_change": 8 }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Telangana Industrial Policy",
+      "name_te": "తెలంగాణ పారిశ్రామిక విధానం",
+      "category": "industry",
+      "description": "TS-iPASS: Single window clearance for industries within 15 days",
+      "description_te": "TS-iPASS: 15 రోజుల్లో పరిశ్రమలకు సింగిల్ విండో క్లియరెన్స్",
+      "cost_per_year": 2000,
+      "implementation_time": 6,
+      "max_level": 5,
+      "effects": [
+        { "metric": "industrial_growth", "value": 2, "type": "gradual", "delay": 6 },
+        { "metric": "unemployment", "value": -0.5, "type": "gradual", "delay": 12 },
+        { "metric": "gdp_growth", "value": 0.8, "type": "gradual", "delay": 12 }
+      ],
+      "faction_effects": [
+        { "faction_id": 5, "approval_change": 15 },
+        { "faction_id": 2, "approval_change": 8 }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Haritha Haram",
+      "name_te": "హరిత హారం",
+      "category": "environment",
+      "description": "Massive tree plantation drive to increase green cover to 33%",
+      "description_te": "పచ్చదనాన్ని 33%కి పెంచడానికి భారీ వృక్షారోపణ కార్యక్రమం",
+      "cost_per_year": 1500,
+      "implementation_time": 3,
+      "max_level": 5,
+      "effects": [
+        { "metric": "healthcare_access", "value": 1, "type": "delayed", "delay": 24 }
+      ],
+      "faction_effects": [
+        { "faction_id": 1, "approval_change": 4 },
+        { "faction_id": 3, "approval_change": 6 }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Double Bedroom Housing",
+      "name_te": "డబుల్ బెడ్రూమ్ ఇళ్ళు",
+      "category": "welfare",
+      "description": "Free 2BHK houses for economically weaker sections",
+      "description_te": "ఆర్థికంగా బలహీన వర్గాలకు ఉచిత 2BHK ఇళ్ళు",
+      "cost_per_year": 15000,
+      "implementation_time": 24,
+      "max_level": 5,
+      "effects": [
+        { "metric": "poverty_rate", "value": -0.8, "type": "delayed", "delay": 24 },
+        { "metric": "infrastructure_index", "value": 2, "type": "gradual", "delay": 12 }
+      ],
+      "faction_effects": [
+        { "faction_id": 1, "approval_change": 10 },
+        { "faction_id": 4, "approval_change": 8 }
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Kanti Velugu",
+      "name_te": "కంటి వెలుగు",
+      "category": "healthcare",
+      "description": "Free eye screening and spectacles/surgery for those in need",
+      "description_te": "అవసరమైన వారికి ఉచిత కంటి పరీక్ష మరియు కళ్ళద్దాలు/శస్త్రచికిత్స",
+      "cost_per_year": 600,
+      "implementation_time": 3,
+      "max_level": 3,
+      "effects": [
+        { "metric": "healthcare_access", "value": 3, "type": "immediate" }
+      ],
+      "faction_effects": [
+        { "faction_id": 1, "approval_change": 5 },
+        { "faction_id": 4, "approval_change": 4 }
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Sheep Distribution",
+      "name_te": "గొర్రెల పంపిణీ",
+      "category": "agriculture",
+      "description": "Distribution of sheep units to Yadava and Kuruma communities",
+      "description_te": "యాదవ మరియు కురుమ సమాజాలకు గొర్రెల యూనిట్ల పంపిణీ",
+      "cost_per_year": 3000,
+      "implementation_time": 6,
+      "max_level": 3,
+      "effects": [
+        { "metric": "farmer_income", "value": 15000, "type": "gradual", "delay": 6 },
+        { "metric": "poverty_rate", "value": -0.3, "type": "gradual", "delay": 12 }
+      ],
+      "faction_effects": [
+        { "faction_id": 1, "approval_change": 10 }
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Telangana Academy for Skill and Knowledge",
+      "name_te": "TASK",
+      "category": "education",
+      "description": "Skill development and training programs for youth employability",
+      "description_te": "యువత ఉపాధి కోసం నైపుణ్య అభివృద్ధి మరియు శిక్షణ కార్యక్రమాలు",
+      "cost_per_year": 800,
+      "implementation_time": 6,
+      "max_level": 5,
+      "effects": [
+        { "metric": "unemployment", "value": -0.4, "type": "gradual", "delay": 12 },
+        { "metric": "industrial_growth", "value": 0.5, "type": "delayed", "delay": 18 }
+      ],
+      "faction_effects": [
+        { "faction_id": 3, "approval_change": 12 },
+        { "faction_id": 5, "approval_change": 5 }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "name": "Monsoon Floods",
+      "name_te": "వరద ముంపు",
+      "category": "natural_disaster",
+      "description": "Heavy rains have caused flooding in several districts, affecting crops and infrastructure.",
+      "probability": 0.15,
+      "trigger": { "month_range": [6, 9] },
+      "choices": [
+        {
+          "text": "Declare emergency and allocate ₹5,000 Cr for relief",
+          "cost": 5000,
+          "effects": [
+            { "metric": "infrastructure_index", "value": -5 }
+          ],
+          "faction_effects": [
+            { "faction_id": 1, "approval_change": 5 }
+          ]
+        },
+        {
+          "text": "Provide minimal support and let local bodies handle",
+          "cost": 500,
+          "effects": [
+            { "metric": "infrastructure_index", "value": -10 }
+          ],
+          "faction_effects": [
+            { "faction_id": 1, "approval_change": -15 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "IT Company Expansion",
+      "name_te": "IT కంపెనీ విస్తరణ",
+      "category": "economic",
+      "description": "A major tech company wants to set up a development center, creating 10,000 jobs.",
+      "probability": 0.1,
+      "trigger": { "min_infrastructure": 60 },
+      "choices": [
+        {
+          "text": "Offer tax incentives and land at subsidized rates",
+          "cost": 2000,
+          "effects": [
+            { "metric": "unemployment", "value": -1 },
+            { "metric": "gdp_growth", "value": 0.5 }
+          ],
+          "faction_effects": [
+            { "faction_id": 2, "approval_change": 10 },
+            { "faction_id": 3, "approval_change": 8 }
+          ]
+        },
+        {
+          "text": "Welcome them with standard terms",
+          "cost": 0,
+          "effects": [
+            { "metric": "unemployment", "value": -0.3 }
+          ],
+          "faction_effects": [
+            { "faction_id": 2, "approval_change": 3 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Farmer Protests",
+      "name_te": "రైతు ఆందోళనలు",
+      "category": "political",
+      "description": "Farmers are protesting demanding higher MSP and loan waivers.",
+      "probability": 0.2,
+      "trigger": { "farmer_approval_below": 40 },
+      "choices": [
+        {
+          "text": "Announce loan waiver of ₹1 lakh per farmer",
+          "cost": 8000,
+          "effects": [],
+          "faction_effects": [
+            { "faction_id": 1, "approval_change": 20 }
+          ]
+        },
+        {
+          "text": "Promise to review demands in next budget",
+          "cost": 0,
+          "effects": [],
+          "faction_effects": [
+            { "faction_id": 1, "approval_change": -5 }
+          ]
+        },
+        {
+          "text": "Increase Rythu Bandhu amount by 20%",
+          "cost": 2800,
+          "effects": [
+            { "metric": "farmer_income", "value": 2000 }
+          ],
+          "faction_effects": [
+            { "faction_id": 1, "approval_change": 10 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Healthcare Crisis",
+      "name_te": "వైద్య సంక్షోభం",
+      "category": "health",
+      "description": "Outbreak of viral fever in multiple districts straining healthcare system.",
+      "probability": 0.12,
+      "trigger": { "healthcare_below": 50 },
+      "choices": [
+        {
+          "text": "Deploy emergency medical teams and free treatment",
+          "cost": 1500,
+          "effects": [
+            { "metric": "healthcare_access", "value": 5 }
+          ],
+          "faction_effects": [
+            { "faction_id": 4, "approval_change": 8 }
+          ]
+        },
+        {
+          "text": "Issue advisory and rely on existing infrastructure",
+          "cost": 100,
+          "effects": [],
+          "faction_effects": [
+            { "faction_id": 4, "approval_change": -10 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Central Government Scheme",
+      "name_te": "కేంద్ర ప్రభుత్వ పథకం",
+      "category": "political",
+      "description": "Centre offers matching funds for infrastructure development.",
+      "probability": 0.1,
+      "trigger": {},
+      "choices": [
+        {
+          "text": "Accept and contribute state's share (50%)",
+          "cost": 5000,
+          "effects": [
+            { "metric": "infrastructure_index", "value": 8 }
+          ],
+          "faction_effects": [
+            { "faction_id": 2, "approval_change": 5 },
+            { "faction_id": 5, "approval_change": 5 }
+          ]
+        },
+        {
+          "text": "Decline citing state priorities",
+          "cost": 0,
+          "effects": [],
+          "faction_effects": []
+        }
+      ]
+    }
+  ]
+}
